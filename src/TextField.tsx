@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-
+import React, { useState, useRef, Ref } from "react";
+// import * as React from 'react';
 interface Person {
     firstName: string;
-    secondName: string;
+    lastName: string;
 }
 
 interface Props {
@@ -12,6 +12,7 @@ interface Props {
     i?: number;
     fn: (bob: string) => string;
     person: Person;
+    handleChange: () => void;
 }
 
 interface TextNode {
@@ -19,15 +20,15 @@ interface TextNode {
 }
 
 // FC = Function Componant
-export const TextField: React.FC<Props> = ({}) => {
+export const TextField: React.FC<Props> = ({handleChange}) => {
     // const [count, setCount] = useState<number | null | undefined>(5);
-    const [count, setCount] = useState<{text: string}>({text: 'hello'});
-    
-    setCount({text})
+    const [count, setCount] = useState<TextNode>({text: 'hello'});
+    const inputRef = useRef<HTMLInputElement>(null);
+    const divRef = useRef<HTMLDivElement>(null);
 
     return (
         <div>
-            <input/>
+            <input ref={inputRef} onChange={handleChange}/>
         </div>
     );
 };
