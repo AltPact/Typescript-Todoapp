@@ -3,13 +3,13 @@ import {motion} from "framer-motion";
 
 export default function Dots(){
     return (
-        <div className="flx w-full h-screen items-center justify center">
+        <div className="flx w-full h-screen items-center justify center bg-[#ffedd5]">
             <div className="grid grid-cols-8 gap-24">
                 {Array.from({ length: 64}, (_,i) => (
                     <Dot
                     key={i}
                     color={getRandomColor()}
-                    time={2000}
+                    time={Math.ceil(Math.random() * 2000)}
                     />
                 ))}
             </div>
@@ -57,7 +57,6 @@ function Dot({color, time}: {color: string, time: number}){
                 }}
                 className="absolute w-8 h-8 rounded-full border"
                 style={{ borderColor: color, backgroundColor: "#ffedd5"}}
-            
             />
         </div>
     )
